@@ -4,8 +4,9 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-footer',
   // inline template,
   template: `
-    <footer>
+    <footer class="text-center">
       <hr>
+      <app-menu></app-menu>
       <p>Copyright 2021 - Arun </p>
     </footer>
   `,
