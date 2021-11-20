@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { ConceptsComponent } from './concepts/concepts.component';
 import { UsersComponent } from './users/users.component';
 import { AboutComponent } from './about/about.component';
 
+// Main Switching Box
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,8 @@ import { AboutComponent } from './about/about.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   // AppModule should in turn be bootstrapped with a comp AppComponent 
