@@ -27,8 +27,7 @@
 
       <hr>
       <h4>3. Event Binding</h4>
-      <button type="button" 
-      (click)="handleClickMe($event)">Click Me</button>
+      <button type="button" (click)="handleClickMe($event)">Click Me</button>
 
       <hr>
       <h4>4. Two Way Binding</h4>
@@ -57,7 +56,43 @@
 
     <div class="tab-pane fade" id="directives-tab" role="tabpanel" aria-labelledby="directives-tab">
       <h2>Directives</h2>
-     
+      <pre>
+      Directives
+      ---
+          Special Instructions to the DOM 
+      
+          1. Attribute Directives
+              Examples: routerLink, routerLinkActive
+      
+          2. Structural Directives 
+              *ngIf, *ngFor, ngSwitch 
+            
+      </pre>
+
+      <h4>*ngIf Demo</h4>
+
+      <div class="alert alert-success" *ngIf="isLoggedIn; else NotAuthDiv">
+        As logged in user you can access premium features of this app.
+      </div>
+
+      <ng-template #NotAuthDiv>
+        <div class="alert alert-danger">
+          Pls login to access premium features of this app.
+        </div>
+      </ng-template>
+
+      <h4>*ngFor</h4>
+      <ul>
+        <li *ngFor="let skill of skillList">{{skill}}</li>
+      </ul>
+      <!-- TODO: find the index n *ngFor --> 
+
+      <!-- TODO: ngSwitch -->
+
+      <h4>Custom Attribute Directives | Demo</h4>
+      <div appColorizer>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      </div>
 
     </div>
 

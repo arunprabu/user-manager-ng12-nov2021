@@ -25,6 +25,11 @@ export class ConceptsComponent implements OnInit {
 
   dataReceivedFromChildComp = '';
 
+  // directives related
+  isLoggedIn = true;
+
+  skillList = ["html", "css", "ts", "ng", "react"];
+
   constructor() { }
 
   ngOnInit(): void {
