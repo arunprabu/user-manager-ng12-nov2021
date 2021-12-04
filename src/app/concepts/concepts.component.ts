@@ -20,6 +20,11 @@ export class ConceptsComponent implements OnInit {
   // two way binding related
   courseName = "Angular";
 
+  // Step 3 of CPB: have the data to be passed to the child comp
+  myAge = 60;
+
+  dataReceivedFromChildComp = '';
+
   constructor() { }
 
   ngOnInit(): void {
@@ -33,6 +38,13 @@ export class ConceptsComponent implements OnInit {
     console.log(event); // event object
     event.target.innerText = "Clicked";
     // TODO: disable the button on click
+  }
+
+  // Step 6 of CEB: Let's have the handler to receive the data
+  handleProfileLoaded(event: any): void{
+    console.log('Handling the emitted custom event');
+    console.log(event);
+    this.dataReceivedFromChildComp = event;
   }
 
 }
