@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-add-user',
@@ -8,6 +9,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   ]
 })
 export class AddUserComponent implements OnInit {
+
+  isSaved = false;
 
   // step1: let's have the form tag equivalent 
   addUserForm = new FormGroup(
@@ -20,11 +23,27 @@ export class AddUserComponent implements OnInit {
 
   // For Step 6: goto HTML for validation msg
   
+  constructor( private userService: UserService) { // 1. Connect with the Service using Dep Inj
 
-
-  constructor() { }
+  }
 
   ngOnInit(): void {
+  }
+
+  handleAddUser(): void{ // Step 8: Let's get the form field data
+    console.log(this.addUserForm.value); // data to be sent to service
+
+    // 2. Send the above data to the service 
+    this.userService.createUser(this.addUserForm.value)
+      .subscribe( (res: any) => { // 3. get the resp from the service
+        console.log(res);
+
+        if(res && res.id ){
+          this.isSaved = true;
+        }
+      });
+    
+
   }
 
 }
