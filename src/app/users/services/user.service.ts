@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { User } from '../models/user';
+import { Observable } from 'rxjs';
 
 // Decorator
 @Injectable({
@@ -27,17 +29,21 @@ export class UserService {
   }
 
   // get all users 
-  getUsers(): any { // 1. get the req from the comp ts 
+  getUsers(): Observable<User[]> { // 1. get the req from the comp ts 
     console.log("Inside Service");
     // 2. send the req to the REST API 
       // 2.1 What's the REST API URL? https://jsonplaceholder.typicode.com/users
       // 2.2 What's the HTTP Method? GET
       // 2.3 What's the REST Client Tool? HttpClient
-    return this.http.get('https://jsonplaceholder.typicode.com/users')
-      .pipe( map( (res: any) => { // 3. get the res from the REST API 
+    return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users')
+      .pipe( map( (res: User[]) => { // 3. get the res from the REST API 
         console.log(res); 
         return res; // 4. send the res to the comp 
       }));
+
+    // TODO: Learn about promise (ES2015) and async / await (ES2017)
+    // Refer: https://codecraft.tv/courses/angular/http/http-with-promises/
+
   }
 
   // get user details 
